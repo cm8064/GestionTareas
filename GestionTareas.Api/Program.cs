@@ -94,6 +94,17 @@ builder.Host.UseSerilog((context, configuration) =>
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddFluentValidationAutoValidation();
 
+var origenesPermitidos = builder.Configuration.GetValue<string>("OrigenesPermitidos");
+
+builder.Services.AddCors(opciones =>
+{
+    opciones.AddDefaultPolicy(politica =>
+    {
+        politica.WithOrigins(origenesPermitidos).AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
+
 //BUILD
 var app = builder.Build();
 
@@ -107,6 +118,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();

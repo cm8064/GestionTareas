@@ -9,7 +9,7 @@ using Serilog;
 namespace GestionTareas.Api.Controllers
 {
     [ApiController]
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     public class TaskController : ControllerBase
     {
@@ -59,7 +59,7 @@ namespace GestionTareas.Api.Controllers
         }
 
         [HttpPatch]
-        [Route("Check")]
+        [Route("Check/{IdTask}")]
         public async Task<IActionResult> Check()
         {
             try
@@ -76,12 +76,14 @@ namespace GestionTareas.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete")]
+        [Route("Delete/{IdTask}")]
         public async Task<IActionResult> Delete()
         {
             try
             {
                 Log.Information("Start method: " + Request.GetDisplayUrl().ToString());
+
+
 
                 return Ok(_rptaGeneral);
             }

@@ -26,13 +26,15 @@ namespace GestionTareas.UnitTesting
         [Fact]
         public void TestLoginOk()
         {
-            //Preparación
-            LoginRequestModel newLogin = new LoginRequestModel();
-            newLogin.User = "user_test";
-            newLogin.Password = "abc123_";
-            newLogin.IdentifierCode = "6f47614d-b2b2-4a20-8bf1-2d0a90a27bd9";
+            //Preparación credencial
+            LoginRequestModel newLogin = new LoginRequestModel()
+            {
+                User = "user_test",
+                IdentifierCode = "abc123_",
+                Password = "6f47614d-b2b2-4a20-8bf1-2d0a90a27bd9"
+            };
 
-            //Ejecuçión
+            //Ejecución
             var result = newAuthenticationController.Login(newLogin);
 
             //Aciertos del testing
@@ -42,13 +44,15 @@ namespace GestionTareas.UnitTesting
         [Fact]
         public void TestLoginBody()
         {
-            //Preparación
-            LoginRequestModel newLogin = new LoginRequestModel();
-            newLogin.User = "user_test";
-            newLogin.Password = "abc123_";
-            newLogin.IdentifierCode = "6f47614d-b2b2-4a20-8bf1-2d0a90a27bd9";
+            //Preparación credencial
+            LoginRequestModel newLogin = new LoginRequestModel()
+            {
+                User = "user_test",
+                IdentifierCode = "abc123_",
+                Password = "6f47614d-b2b2-4a20-8bf1-2d0a90a27bd9"
+            };
 
-            //Ejecuçión
+            //Ejecución
             var result = newAuthenticationController.Login(newLogin);
 
             //Aciertos del testing

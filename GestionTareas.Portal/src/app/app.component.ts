@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
+import { TaskService } from './task.service';
 
 export interface PeriodicElement {
   name: string;
@@ -31,6 +32,17 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AppComponent {
   title = 'GestionTareas.Portal';
+  taskService = inject(TaskService);
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+
+  tareas: any[] = [];
+
+  constructor(){
+    this.taskService.obtenerGet().subscribe(datos =>{
+      this.tareas = datos;
+    });
+  }
 }
+
+
