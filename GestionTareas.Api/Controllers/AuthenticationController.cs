@@ -25,7 +25,7 @@ namespace GestionTareas.Api.Controllers
             try
             {
                 Log.Information("Start method: " + Request.GetDisplayUrl().ToString());
-
+                
                 return Ok(_AuthenticationBll.Login(loginModel));
             }
             catch (Exception ex)
