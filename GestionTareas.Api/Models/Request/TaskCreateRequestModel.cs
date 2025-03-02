@@ -1,7 +1,9 @@
-﻿namespace GestionTareas.Api.Models.Request
+﻿using GestionTareas.Api.EntityModels;
+
+namespace GestionTareas.Api.Models.Request
 {
     public class TaskCreateRequestModel
     {
-        public string taskName = "";
+        public string name { get; set; }
     }
 }

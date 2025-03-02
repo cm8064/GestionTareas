@@ -47,6 +47,7 @@ namespace GestionTareas.Api.Business
             catch (Exception ex)
             {
                 Log.Error(ex.ToString());
+                _rptaGeneral.code = 500;
                 _rptaGeneral.message = ex.Message;
                 _rptaGeneral.data = ex.ToString();
                 return _rptaGeneral;

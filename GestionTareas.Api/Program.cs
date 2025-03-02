@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using GestionTareas.Api.Business;
+using GestionTareas.Api.Infrastructure;
 using GestionTareas.Api.Models;
 using GestionTareas.Api.Utility;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -59,6 +60,10 @@ builder.Services.AddSingleton<RptaGeneral>();
 
 //Services Application Layer
 builder.Services.AddScoped<AuthenticationBll>();
+builder.Services.AddScoped<TaskBll>();
+
+//Services Infrastructure Layer 
+builder.Services.AddScoped<DbContext>();
 
 //Service JWT
 builder.Services.AddAuthentication(config =>

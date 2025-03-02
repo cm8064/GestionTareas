@@ -16,9 +16,14 @@ namespace GestionTareas.Api.Controllers
         private RptaGeneral _rptaGeneral;
         private TaskBll _taskBll;
 
+        public TaskController(TaskBll newTaskBll)
+        {
+            _taskBll = newTaskBll;
+        }
+
         [HttpPost]
         [Route("Task")]
-        public async Task<IActionResult> Create(LoginRequestModel loginModel)
+        public async Task<IActionResult> Create(TaskCreateRequestModel taskCreateModel)
         {
 
             //Method for create task
@@ -26,9 +31,7 @@ namespace GestionTareas.Api.Controllers
             {
                 Log.Information("Start method: " + Request.GetDisplayUrl().ToString());
 
-
-
-                return Ok(_rptaGeneral);
+                return Ok(_taskBll.Create(taskCreateModel));
             }
             catch (Exception ex)
             {
@@ -41,11 +44,12 @@ namespace GestionTareas.Api.Controllers
         [Route("Task")]
         public async Task<IActionResult> Get()
         {
+            //Method for list all task
             try
             {
                 Log.Information("Start method: " + Request.GetDisplayUrl().ToString());
 
-                return Ok(_rptaGeneral);
+                return Ok(_taskBll.ListAll());
             }
             catch (Exception ex)
             {
