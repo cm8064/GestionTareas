@@ -1,4 +1,7 @@
 ﻿using FluentValidation;
+using GestionTareas.Api.Business;
+using GestionTareas.Api.Models;
+using GestionTareas.Api.Utility;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -50,6 +53,12 @@ builder.Services.AddSwaggerGen(opt =>
     });
 
 });
+
+builder.Services.AddSingleton<Custom>();
+builder.Services.AddSingleton<RptaGeneral>();
+
+//Services Application Layer
+builder.Services.AddScoped<AuthenticationBll>();
 
 //Service JWT
 builder.Services.AddAuthentication(config =>

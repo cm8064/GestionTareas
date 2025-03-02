@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Documentation\" />
-    <Folder Include="Validations\" />
+    <Folder Include="Infrastructure\" />
   </ItemGroup>
 
 </Project>
