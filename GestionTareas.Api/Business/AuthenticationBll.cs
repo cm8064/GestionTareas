@@ -30,45 +30,16 @@ namespace GestionTareas.Api.Business
             {
                 Log.Information("Start method: AuthenticationBll-Login");
 
-                Guid guidConvertido = Guid.Parse(loginModel.IdentifierCode);
-
-                /*
-                var query = _InfraIntegrador.FindByGuid(guidConvertido, loginModel.User);
-
-                if (query != null)
+                //Acá se recrea la forma en como llama la BD para consultar el usuario y confirmar que tenga acceso a la aplicación
+                
+                LoginResponseModel newLoginResponseModel = new LoginResponseModel()
                 {
-                    _rptaGeneral.code = 200;
+                    //Armar Token JWT
+                    token = _nuevoCustom.GenerarJWT(loginModel.IdentifierCode.ToString(), loginModel.User)
+                };
 
-                    //Valida que no este inactivo
-                    if (query.IntegradorEstado == false)
-                        _rptaGeneral.message = "El código de integrador se encuentra inactivo.";
-
-                    //Valida que el usuario y contraseña coincidan
-                    if (query.IntegradorContrasena == loginModel.Password)
-                    {
-                        //Armar Token JWT
-                        _rptaGeneral.message = "Login exitoso";
-
-                        LoginResponseModel newLoginResponseModel = new LoginResponseModel()
-                        {
-                            token = _nuevoCustom.GenerarJWT(query.IntegradorId, query.IntegradorIdentificacion.ToString(), query.IntegradorUsuario)
-                        };
-
-                        _rptaGeneral.objectResponse = newLoginResponseModel;
-                    }
-                    else
-                    {
-                        _rptaGeneral.message = "El código y/ó la contraseña no coinciden.";
-                    }
-
-                }
-                else
-                {
-                    _rptaGeneral.code = 404;
-                    _rptaGeneral.message = "Código de integrador no encontrado.";
-                }
-
-                */
+                _rptaGeneral.message = "Login exitoso";
+                _rptaGeneral.objectResponse = newLoginResponseModel;
 
                 return _rptaGeneral;
 

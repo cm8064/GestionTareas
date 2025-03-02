@@ -44,7 +44,7 @@ namespace GestionTareas.Api.Utility
 
         }
 
-        public string GenerarJWT(double clienteId, string clienteCodigo, string clienteUsuario)
+        public string GenerarJWT(string clienteCodigo, string clienteUsuario)
         {
             try
             {
@@ -54,10 +54,9 @@ namespace GestionTareas.Api.Utility
 
                 var userClaims = new[]
                 {
-                new Claim(ClaimTypes.NameIdentifier, clienteId.ToString()),
-                new Claim(ClaimTypes.SerialNumber, clienteCodigo),
-                new Claim(ClaimTypes.Name, clienteUsuario)
-            };
+                    new Claim(ClaimTypes.SerialNumber, clienteCodigo),
+                    new Claim(ClaimTypes.Name, clienteUsuario)
+                };
 
                 var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:key"]!));
                 var credential = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);

@@ -1,4 +1,6 @@
-﻿using GestionTareas.Api.Models;
+﻿using GestionTareas.Api.Business;
+using GestionTareas.Api.Models;
+using GestionTareas.Api.Models.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -9,17 +11,22 @@ namespace GestionTareas.Api.Controllers
     [ApiController]
     [Authorize]
     [Route("api/[controller]")]
-    public class TaskController : Controller
+    public class TaskController : ControllerBase
     {
         private RptaGeneral _rptaGeneral;
+        private TaskBll _taskBll;
 
         [HttpPost]
         [Route("Task")]
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create(LoginRequestModel loginModel)
         {
+
+            //Method for create task
             try
             {
                 Log.Information("Start method: " + Request.GetDisplayUrl().ToString());
+
+
 
                 return Ok(_rptaGeneral);
             }
