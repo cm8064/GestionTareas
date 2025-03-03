@@ -29,6 +29,7 @@
 
 # Instrucciones para ejecutar proyectos
  <p>Clonar el repo:  https://github.com/cm8064/GestionTareas.git </p>
+ <p>Rama main</p>
  <p>Para ejecutar el backend haga: dotnet run</p>
  <p>En la ubicación: GestionTareas\GestionTareas.Api\</p>
  
