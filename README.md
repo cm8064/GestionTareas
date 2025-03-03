@@ -10,7 +10,7 @@
 <p>En la API se implementó lo siguiente:</p> 
 
  <li>Swagger para la documentación</li>
- <li>JWT Berer para la seguridad </li>
+ <li>JWT Bearer para la seguridad </li>
  <li>FluentValidation para las validaciones de entrada </li>
  <li>SQLite para los datos en memoria </li>
  <li>Serilog para el registro de errores</li>
